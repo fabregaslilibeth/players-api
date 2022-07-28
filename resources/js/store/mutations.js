@@ -1,5 +1,9 @@
 export default {
-  setUser(state, payload) {
-    state.user = payload.user
+  setIsLoading(state, payload) {
+    state.isLoading = payload
+  },
+
+  setIsDisabled(state, payload) {
+    state.isDisabled = payload
   },
 }

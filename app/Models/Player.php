@@ -24,4 +24,11 @@ class Player extends Model
     protected $casts = [
         'edited_at' => 'datetime',
     ];
+
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->second_name}";
+    }
 }

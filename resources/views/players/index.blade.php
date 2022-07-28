@@ -7,6 +7,8 @@
         <button>import csv</button>
         <button>fetch 100 players</button>
         <button>auto fetch</button>
+
+        <add-player></add-player>
         <button>add new player</button>
     </div>
 
@@ -25,39 +27,41 @@
                             <tr class="hidden md:table-row">
                                 <th scope="col" class="px-6 py-3 border-r hidden md:table-cell">ID</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-darkest border-r uppercase tracking-wider">
+                                    class="px-6 py-3 text-left text-xs font-extrabold text-gray-darkest border-r uppercase tracking-wider">
                                     Name
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-darkest border-r uppercase tracking-wider hidden md:table-cell">
-                                    Edited
+                                    class="px-6 py-3 text-center text-xs font-extrabold text-gray-darkest border-r uppercase tracking-wider">
+                                    Last Edited
                                 </th>
                             </tr>
                         </slot>
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200">
-                        <slot name="table-rows-wrapper">
+                        @forelse($players as $player)
                             <tr>
-                                <td class="border-r px-6 py-4 whitespace-nowrap hidden md:table-cell">
-                                    <div class="flex-shrink-0">
-                                       1
-                                    </div>
+                                <td class="border-r px-6 py-1 text-center">
+                                    {{ $player->id }}
                                 </td>
-                                <td class="border-r px-6 py-4 whitespace-nowrap cursor-pointer">
-                                    <div class="text-sm font-medium text-gray-900">
-                                        <a href="/players/1">Jane Cooper</a>
+                                <td class="border-r px-6 py-1 whitespace-nowrap cursor-pointer">
+                                    <div class="text-sm font-medium text-gray-900 hover:text-blue-600 duration-300">
+                                        <a href="{{ route('players.show', $player) }}">{{ $player->full_name }}</a>
                                     </div>
                                 <td
-                                    class="border-r px-6 py-4 whitespace-nowrap text-right text-sm font-medium hidden md:table-cell border-t pt-2">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    class="border-r px-6 py-1 text-center font-medium border-t">
+                                        {{ $player->edited_at ? $player->edited_at->diffForHumans() : 'not edited'}}
                                 </td>
                             </tr>
-                        </slot>
+                        @empty
+                            aasd
+                        @endforelse
                         <!-- More people... -->
                         </tbody>
                     </table>
                 </div>
+
+                {{ $players->links() }}
             </div>
         </div>
     </div>

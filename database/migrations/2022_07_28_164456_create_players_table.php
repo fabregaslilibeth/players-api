@@ -20,15 +20,15 @@ class CreatePlayersTable extends Migration
 
             $table->string('second_name');
 
-            $table->string('form');
+            $table->string('form')->nullable();
 
-            $table->string('total_points');
+            $table->string('total_points')->nullable();
 
-            $table->string('influence');
+            $table->string('influence')->nullable();
 
-            $table->string('creativity');
+            $table->string('creativity')->nullable();
 
-            $table->string('threat');
+            $table->string('threat')->nullable();
 
             $table->uuid('ict_index')->nullable();
 
