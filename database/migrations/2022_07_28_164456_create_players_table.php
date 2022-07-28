@@ -15,6 +15,25 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
+
+            $table->string('first_name');
+
+            $table->string('second_name');
+
+            $table->string('form');
+
+            $table->string('total_points');
+
+            $table->string('influence');
+
+            $table->string('creativity');
+
+            $table->string('threat');
+
+            $table->uuid('ict_index')->nullable();
+
+            $table->timestamp('edited_at')->nullable();
+
             $table->timestamps();
         });
     }

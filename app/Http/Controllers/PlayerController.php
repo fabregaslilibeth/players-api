@@ -45,18 +45,18 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Player  $player
-     * @return Response
+     * @param Player $player
+     * @return Application|Factory|View
      */
     public function show(Player $player)
     {
-
+        return view('players.show', ['player' => $player]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Player  $player
+     * @param Player $player
      * @return Response
      */
     public function edit(Player $player)
@@ -68,7 +68,7 @@ class PlayerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Player  $player
+     * @param Player $player
      * @return Response
      */
     public function update(Request $request, Player $player)
@@ -79,7 +79,7 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Player  $player
+     * @param Player $player
      * @return Response
      */
     public function destroy(Player $player)
