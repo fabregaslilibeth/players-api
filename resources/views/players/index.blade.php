@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="flex justify-end space-x-6">
+        SEARCH BY ID
         <button>import json</button>
         <button>import csv</button>
         <button>fetch 100 players</button>
