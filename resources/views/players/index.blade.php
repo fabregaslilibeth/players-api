@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-end space-x-6">
+    <div class="flex justify-end items-start space-x-6">
         SEARCH BY ID
-        <button>import json</button>
-        <button>import csv</button>
         <button>fetch 100 players</button>
         <button>auto fetch</button>
+{{--        <button--}}
+{{--            class="bg-primary px-4 py-2 my-2 mx-3 rounded-md cursor-pointer text-xs text-white">--}}
+{{--            Import Players--}}
+{{--        </button>--}}
+
+        <data-import></data-import>
 
         <add-player></add-player>
-        <button>add new player</button>
     </div>
 
     <div class="flex flex-col w-11/12">
@@ -21,7 +24,7 @@
                         <slot name="table-title">Players</slot>
                     </div>
 
-                    <table class="min-w-full divide-y divide-gray-200 border-t">
+                    <table class="min-w-full divide-y divide-gray-200 border-t bg-green-200">
                         <thead class="bg-gray-50">
                         <slot name="table-header-wrapper">
                             <tr class="hidden md:table-row">
@@ -29,10 +32,6 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-extrabold text-gray-darkest border-r uppercase tracking-wider">
                                     Name
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-center text-xs font-extrabold text-gray-darkest border-r uppercase tracking-wider">
-                                    Last Edited
                                 </th>
                             </tr>
                         </slot>
@@ -48,10 +47,6 @@
                                     <div class="text-sm font-medium text-gray-900 hover:text-blue-600 duration-300">
                                         <a href="{{ route('players.show', $player) }}">{{ $player->full_name }}</a>
                                     </div>
-                                <td
-                                    class="border-r px-6 py-1 text-center font-medium border-t">
-                                        {{ $player->edited_at ? $player->edited_at->diffForHumans() : 'not edited'}}
-                                </td>
                             </tr>
                         @empty
                             aasd

@@ -21,10 +21,11 @@ Vue.use(Toasted, {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('text-input', require('./components/Inputs/TextInput.vue').default);
-
-Vue.component('fields', require('./components/Sample.vue').default);
-Vue.component('add-player', require('./components/AddPlayer.vue').default);
 Vue.component('side-modal', require('./components/SideModal.vue').default);
+
+Vue.component('add-player', require('./components/AddPlayer.vue').default);
+Vue.component('data-import', require('./components/DataImport.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -3,7 +3,7 @@
     <side-modal transition="fade" @confirmed="submit">
       <template slot="modal-trigger">
         <button
-          class="bg-agent-primary px-4 py-2 my-2 mx-3 rounded-md cursor-pointer text-xs">
+          class="bg-primary px-4 py-2 mx-3 rounded-md cursor-pointer text-md shadow-lg hover:shadow-xl text-white">
           Add Player
         </button>
       </template>

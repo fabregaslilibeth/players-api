@@ -9,6 +9,8 @@ class Player extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'first_name',
         'second_name',
@@ -18,11 +20,6 @@ class Player extends Model
         'creativity',
         'threat',
         'ict_index',
-        'edited_at',
-    ];
-
-    protected $casts = [
-        'edited_at' => 'datetime',
     ];
 
     protected $appends = ['full_name'];

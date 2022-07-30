@@ -7,6 +7,12 @@ use App\Models\Player;
 
 class PlayerController extends Controller
 {
+    public function index()
+    {
+        return Player::all();
+
+    }
+
     public function store(StorePlayerRequest $request)
     {
         Player::create($request->all());
