@@ -25,6 +25,7 @@ Vue.component('side-modal', require('./components/SideModal.vue').default);
 
 Vue.component('add-player', require('./components/AddPlayer.vue').default);
 Vue.component('data-import', require('./components/DataImport.vue').default);
+Vue.component('fetch-players', require('./components/FetchPlayers.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

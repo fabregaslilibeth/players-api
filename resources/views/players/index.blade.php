@@ -3,12 +3,7 @@
 @section('content')
     <div class="flex justify-end items-start space-x-6">
         SEARCH BY ID
-        <button>fetch 100 players</button>
-        <button>auto fetch</button>
-{{--        <button--}}
-{{--            class="bg-primary px-4 py-2 my-2 mx-3 rounded-md cursor-pointer text-xs text-white">--}}
-{{--            Import Players--}}
-{{--        </button>--}}
+        <fetch-players></fetch-players>
 
         <data-import></data-import>
 
@@ -49,7 +44,7 @@
                                     </div>
                             </tr>
                         @empty
-                            aasd
+                            No players found.
                         @endforelse
                         <!-- More people... -->
                         </tbody>

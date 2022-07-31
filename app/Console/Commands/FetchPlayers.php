@@ -4,9 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Player;
 use App\Services\PlayerDataSource;
-use App\Services\Typicode;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
 
 class FetchPlayers extends Command
 {
@@ -43,22 +41,30 @@ class FetchPlayers extends Command
     {
         $players = (new PlayerDataSource())->fetch();
 
-        //check if existing
+        //get all players from API that doesnt exist in DB
+        $newPlayers = collect($players)->filter(function ($player) {
+            $newPlayer = Player::query()
+                ->where('first_name', $player['first_name'])
+                ->where('second_name', $player['second_name'])
+                ->first();
 
-        //store if not
-        foreach (collect($players) as $player) {
-                $newPlayer = Player::query()->firstOrNew([
-                    'first_name' => $player['first_name'],
-                    'second_name' => $player['second_name'],
-                ]);
+            return ! $newPlayer;
+        })->take(3);
 
-                //for new players, found in api but not in database
-                if (! $newPlayer->exists) {
-                    $newPlayer->first_name = $player['first_name'];
-                    $newPlayer->second_name = $player['second_name'];
-                }
-
-                $newPlayer->save();
+        //save new players
+        foreach ($newPlayers as $newPlayer) {
+            Player::create([
+                'first_name' => $newPlayer['first_name'],
+                'second_name' => $newPlayer['second_name'],
+                'form' => $newPlayer['form'],
+                'total_points' => $newPlayer['total_points'],
+                'influence' => $newPlayer['influence'],
+                'creativity' => $newPlayer['creativity'],
+                'threat' => $newPlayer['threat'],
+                'ict_index' => $newPlayer['ict_index'],
+            ]);
         }
+
+        return count($newPlayers);
     }
 }

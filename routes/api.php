@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('players', PlayerController::class)->only(['store', 'index']);
 Route::post('imports', [DataImportController::class, 'store']);
+Route::get('players', [PlayerController::class, 'fetch']);
