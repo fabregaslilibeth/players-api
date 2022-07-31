@@ -31,7 +31,7 @@ export default {
       file: '',
       searchKey: '',
       category: '',
-      helperText: 'Accepted: csv, json',
+      helperText: 'Accepted: csv',
       error: '',
       isLoading: false,
       isFiltering: false,

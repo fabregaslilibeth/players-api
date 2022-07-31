@@ -2305,7 +2305,7 @@ __webpack_require__.r(__webpack_exports__);
       file: '',
       searchKey: '',
       category: '',
-      helperText: 'Accepted: csv, json',
+      helperText: 'Accepted: csv',
       error: '',
       isLoading: false,
       isFiltering: false
