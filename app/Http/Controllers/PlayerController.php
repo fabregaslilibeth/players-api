@@ -7,6 +7,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Console\Input\Input;
 
 class PlayerController extends Controller
 {
@@ -31,5 +33,17 @@ class PlayerController extends Controller
     public function show(Player $player)
     {
         return view('players.show', ['player' => $player]);
+    }
+
+    public function search()
+    {
+        //search that student in Database
+        $player = Player::find(request('q'));
+
+        if (! $player) {
+            return \redirect()->back()->withErrors(['message' => 'Player does not exist.']);
+        }
+
+        return Redirect::route('players.show', ['player' => $player]);
     }
 }

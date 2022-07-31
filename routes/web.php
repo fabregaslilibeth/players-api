@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('players', PlayerController::class)->only(['index', 'show']);
+Route::get('/search', [PlayerController::class, 'search']);

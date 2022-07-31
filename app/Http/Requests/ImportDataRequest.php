@@ -27,7 +27,7 @@ class ImportDataRequest extends FormRequest
             'file' =>  [
                 'file',
                 'required',
-                'mimetypes:text/plain,application/json',
+                'mimetypes:text/plain',
                 'max:8192'
             ],
         ];
