@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); //this contains the requirement summary
 });
 
-Route::resource('players', PlayerController::class)->only(['index', 'show']);
+Route::resource('players', PlayerController::class)->only(['index', 'show', 'destroy']);
 Route::get('/search', [PlayerController::class, 'search']);

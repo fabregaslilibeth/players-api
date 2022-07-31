@@ -2206,21 +2206,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       errors: new _helpers_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
   },
-  watch: {
-    first_name: function first_name(newValue, oldValue) {
-      var disable = newValue === '' || this.second_name === '';
-      this.setIsDisabled(disable);
-    },
-    second_name: function second_name(newValue, oldValue) {
-      var disable = newValue === '' || this.first_name === '';
-      this.setIsDisabled(disable);
-    }
-  },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)(['setIsDisabled', 'setIsLoading'])), {}, {
     submit: function submit() {
       var _this = this;
 
-      // this.setIsLoading(true)
       this.errors.clear();
       axios.post('/api/players', {
         first_name: this.first_name,
@@ -2246,6 +2235,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.creativity = '';
         _this.threat = '';
         _this.ict_index = '';
+        window.location.reload();
       })["catch"](function (error) {
         if (error.response.status === 422) {
           _this.errors.record(error.response.data.errors);
@@ -2329,6 +2319,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/imports', formData, config).then(function (_ref) {
         var data = _ref.data;
         _this.isLoading = false;
+
+        _this.$toasted.success('CSV successfully uploaded.');
+
+        window.location.reload();
       })["catch"](function () {
         _this.$toasted.error('Whoops! Please make sure file type is correct.');
 

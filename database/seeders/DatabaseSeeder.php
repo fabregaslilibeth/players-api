@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       //  Player::factory(30)->create();
+         Player::factory(100)->create();
     }
 }
