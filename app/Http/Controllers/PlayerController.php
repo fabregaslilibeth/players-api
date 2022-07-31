@@ -6,8 +6,7 @@ use App\Models\Player;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Artisan;
 
 class PlayerController extends Controller
 {
@@ -18,28 +17,9 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return view('players.index');
-    }
+        $players = Player::paginate(15);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('players.index', ['players' => $players]);
     }
 
     /**
@@ -51,39 +31,5 @@ class PlayerController extends Controller
     public function show(Player $player)
     {
         return view('players.show', ['player' => $player]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Player $player
-     * @return Response
-     */
-    public function edit(Player $player)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param Player $player
-     * @return Response
-     */
-    public function update(Request $request, Player $player)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Player $player
-     * @return Response
-     */
-    public function destroy(Player $player)
-    {
-        //
     }
 }

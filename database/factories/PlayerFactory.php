@@ -24,11 +24,12 @@ class PlayerFactory extends Factory
         return [
             'first_name' => $this->faker->firstName(),
             'second_name' => $this->faker->lastName(),
-            'form' => 0,
-            'total_points' => 0,
-            'influence' => 0,
-            'creativity' => 0,
-            'threat' => 0,
+            'form' => mt_rand(.1, 10),
+            'total_points' => mt_rand(20, 500),
+            'influence' => mt_rand(.1, 10),
+            'creativity' => mt_rand(.1, 10),
+            'threat' => mt_rand(.1, 10),
+            'ict_index' => mt_rand(.1, 10),
         ];
     }
 }

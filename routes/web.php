@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlayerController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::resource('players', \App\Http\Controllers\PlayerController::class);
+Route::resource('players', PlayerController::class)->only(['index', 'show']);
