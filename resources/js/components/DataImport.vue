@@ -58,6 +58,8 @@ export default {
       axios.post('/api/imports', formData, config)
         .then(({data}) => {
           this.isLoading = false
+          this.$toasted.success('CSV successfully uploaded.');
+          window.location.reload()
         }).catch(() => {
         this.$toasted.error('Whoops! Please make sure file type is correct.');
         this.isLoading = false

@@ -136,25 +136,10 @@ export default {
     }
   },
 
-  watch: {
-    first_name: function (newValue, oldValue) {
-      let disable = newValue === '' || this.second_name === ''
-
-      this.setIsDisabled(disable)
-    },
-
-    second_name: function (newValue, oldValue) {
-      let disable = newValue === '' || this.first_name === ''
-
-      this.setIsDisabled(disable)
-    },
-  },
-
   methods: {
     ...mapMutations(['setIsDisabled', 'setIsLoading']),
 
     submit() {
-      // this.setIsLoading(true)
       this.errors.clear()
 
       axios.post('/api/players', {
@@ -178,6 +163,7 @@ export default {
           this.creativity = ''
           this.threat = ''
           this.ict_index = ''
+          window.location.reload()
         })
         .catch((error) => {
           if (error.response.status === 422) {
@@ -189,6 +175,7 @@ export default {
           }
           this.setIsLoading(false)
         })
+
     },
   }
 }
